@@ -41,9 +41,9 @@
 
       return function tooltip(chart) {
         var tooltipSelector = options.pointClass;
-        if (chart.constructor.name == Chartist.Bar.prototype.constructor.name) {
+        if (chart instanceof Chartist.Bar) {
           tooltipSelector = 'ct-bar';
-        } else if (chart.constructor.name ==  Chartist.Pie.prototype.constructor.name) {
+        } else if (chart instanceof Chartist.Pie) {
           // Added support for donut graph
           if (chart.options.donut) {
             // Added support or SOLID donut graph
@@ -51,7 +51,7 @@
           } else {
             tooltipSelector = 'ct-slice-pie';
           }
-        }
+  	  }
 
         var $chart = chart.container;
         var $toolTip = $chart.querySelector('.chartist-tooltip');
